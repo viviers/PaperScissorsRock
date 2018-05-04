@@ -23,7 +23,6 @@ function humanPlay() {
 function playRound() {
   let computerSel = computerPlay();
   let humanSel = humanPlay();
-
   if (computerSel == "rock" && humanSel == "scissors" || computerSel == "scissors" && humanSel == "paper" || computerSel == "paper" && humanSel == "rock") {
     console.log("The computer chose " + computerSel + " and you chose " + humanSel + ". The computer flogged ya!");
     var roundOutcome = "Computer Win";
@@ -36,6 +35,10 @@ function playRound() {
     console.log("The computer chose " + computerSel + " and you chose " + humanSel + ". Tis' a draw innit.");
     var roundOutcome = "Draw";
     return roundOutcome;
+  } else {
+      console.log("You fucked up the input! Probably with a spelling error. The computer wins by default.");
+      var roundOutcome = "Computer Win";
+      return roundOutcome;
   }
 }
 
@@ -45,6 +48,7 @@ function game() {
   var computerScore = 0;
   while (x < 5) {
     x++;
+    alert("Time to play round " + x + "/5 . Buckle up tight and click the button to proceed.");
     console.log("Round " + x)
     outcome = playRound();
     if (outcome == "Computer Win") {
