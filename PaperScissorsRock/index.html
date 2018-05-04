@@ -1,0 +1,63 @@
+<h3> Open DevTools console and type Game(); to play </h3>
+
+<script>
+function computerPlay() {
+  let computerInt = Math.floor(Math.random() * 3 + 1);
+  if (computerInt == 3) {
+    return "paper";
+  } else if (computerInt == 2) {
+    return "scissors";
+  } else if (computerInt == 1) {
+    return "rock";
+  }
+}
+
+function humanPlay() {
+  choice = "";
+  while (choice.toUpperCase() != ("PAPER" || "SCISSORS" || "ROCK")) {
+    let choice = prompt("Paper, scissors, or rock?");
+    return choice.toLowerCase();
+  }
+}
+
+function playRound() {
+  let computerSel = computerPlay();
+  let humanSel = humanPlay();
+
+  if (computerSel == "rock" && humanSel == "scissors" || computerSel == "scissors" && humanSel == "paper" || computerSel == "paper" && humanSel == "rock") {
+    console.log("The computer chose " + computerSel + " and you chose " + humanSel + ". The computer flogged ya!");
+    var roundOutcome = "Computer Win";
+    return roundOutcome;
+  } else if (humanSel == "rock" && computerSel == "scissors" || humanSel == "scissors" && computerSel == "paper" || humanSel == "paper" && computerSel == "rock") {
+    console.log("The computer chose " + computerSel + " and you chose " + humanSel + ". You somehow clutch it!");
+    var roundOutcome = "Human Win";
+    return roundOutcome;
+  } else if (computerPlay == humanSel) {
+    console.log("The computer chose " + computerSel + " and you chose " + humanSel + ". Tis' a draw innit.");
+    var roundOutcome = "Draw";
+    return roundOutcome;
+  }
+}
+
+function game() {
+  var x = 0;
+  var humanScore = 0;
+  var computerScore = 0;
+  while (x < 5) {
+    x++;
+    console.log("Round " + x)
+    outcome = playRound();
+    if (outcome == "Computer Win") {
+      computerScore++;
+    } else if (outcome == "Human Win") {
+      humanScore++;
+    } else if (outcome == "Draw") {
+      computerScore = computerScore + 0.5;
+      humanScore = humanScore + 0.5;
+    }
+
+  }
+console.log("Five rounds are up. The computer scored " + computerScore + " and the player scored " + humanScore + ". Thanks for playing!");
+}
+
+</script>
